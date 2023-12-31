@@ -1,0 +1,29 @@
+ int ispossible(char user[])
+ {
+     for(int i = 0; i<strlen(user); i++)
+     {
+         char c = user[i];
+         for(int j = i+1; j<strlen(user); j++)
+         {
+             if(c > user[j])
+             return 1;
+         }
+     }
+     return 0;
+ }
+char** possibleChanges(int usernames_count, char** usernames, int* result_count) {
+              *result_count = usernames_count;
+            char ** results = malloc(sizeof(char *) * usernames_count);
+        
+            for(int i = 0; i<usernames_count; i++)
+            {
+                if(ispossible(usernames[i]))
+                {
+                    results[i] = strdup("YES");
+                }
+                else {
+                results[i] = strdup("NO");
+                }
+            }
+            return results;
+}
